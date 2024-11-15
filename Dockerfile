@@ -9,10 +9,15 @@ RUN apt-get update && apt-get install -y \
     wget curl sudo cron \
     && apt-get clean
 
-# Download and install aaPanel (non-interactive)
-RUN wget -O install.sh http://www.aapanel.com/script/install-ubuntu_6.0_en.sh && \
-    bash install.sh y && \
-    rm -f install.sh
+# Download and run the aaPanel installation script non-interactively
+RUN URL=https://www.aapanel.com/script/install_7.0_en.sh && \
+    if [ -f /usr/bin/curl ]; then \
+        curl -ksSO "$URL" ; \
+    else \
+        wget --no-check-certificate -O install_7.0_en.sh "$URL"; \
+    fi && \
+    bash install_7.0_en.sh aapanel && \
+    rm -f install_7.0_en.sh
 
 # Expose required ports for aaPanel
 EXPOSE 7800 8888
