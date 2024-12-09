@@ -15,7 +15,7 @@ RUN curl -ksSO https://www.aapanel.com/script/install_7.0_en.sh && sudo bash ins
 
 
 # Expose required ports for aaPanel
-EXPOSE 7800 8888
+EXPOSE 80
 
 # Start aaPanel service on container startup
 CMD ["bash", "-c", "/etc/init.d/bt start && tail -f /dev/null"]
