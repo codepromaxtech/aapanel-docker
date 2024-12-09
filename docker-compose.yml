@@ -1,14 +1,16 @@
+version: '3.8'
+
 services:
   aapanel:
-    build: .
+    image: codepromax24/aapanel:latest
     container_name: aapanel-docker
     ports:
-      - "7800:7800"
-      - "8888:8888"
+      - "90:80" 
+      - "15059:15059"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /usr/bin/docker:/usr/bin/docker
-      - aapanel-data:/www
+      - aapanel-data:/var/www 
     restart: unless-stopped
 
 volumes:
