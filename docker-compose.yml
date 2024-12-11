@@ -6,11 +6,15 @@ services:
     container_name: aapanel-docker
     ports:
       - "90:80" 
+      - "8443:443"
       - "15059:15059"
+      - "999:888"
+      - "2020:20"
+      - "2121:21"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /usr/bin/docker:/usr/bin/docker
-      - aapanel-data:/var/www 
+      - aapanel-data:/www 
     restart: unless-stopped
 
 volumes:
